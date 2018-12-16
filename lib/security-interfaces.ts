@@ -3,15 +3,16 @@ export interface Identity {
 }
 
 export interface UserData {
-  username: string;
+  username: string | undefined;
   first: boolean;
   config: UserConfig;
   jwt: Decoded;
 }
 
 export interface PersonalData {
-  userData: UserData;
-  allData: object;
+  userData: UserData | undefined;
+  allData: object | undefined;
+  error: string | undefined;
 }
 
 

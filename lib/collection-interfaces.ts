@@ -130,7 +130,7 @@ export interface MonthlyPlays {
 }
 
 export interface GeekSummary {
-    warData: WarTableRow;
+    warData: WarTableRow | undefined;
     rated: number;
     average: number;
     monthsPlayed: number;
