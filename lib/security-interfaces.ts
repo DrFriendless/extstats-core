@@ -3,8 +3,8 @@ export interface Identity {
 }
 
 export class BuddySet {
-    private readonly name: string;
-    private readonly buddies: string[];
+    private name: string;
+    private buddies: string[];
 
     constructor(name: string, buddies: string[]) {
         this.name = name;
@@ -18,14 +18,22 @@ export class BuddySet {
     public getBuddies(): string[] {
         return this.buddies;
     }
+
+    public setName(name: string) {
+      this.name = name;
+    }
+
+    public setBuddies(buddies: string[]) {
+      this.buddies = buddies;
+    }
 }
 
 export interface UserData {
-  username: string | undefined;
-  first: boolean;
+  usernames: string[];
+  first: boolean | undefined;
   buddies: BuddySet[];
-  config: UserConfig;
-  jwt: Decoded;
+  config: UserConfig | undefined;
+  jwt: Decoded | undefined;
 }
 
 // this is everything that we store.
