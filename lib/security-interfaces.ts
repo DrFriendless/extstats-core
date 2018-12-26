@@ -29,9 +29,7 @@ export class BuddySet {
 }
 
 export interface UserData {
-  usernames: string[];
   first: boolean | undefined;
-  buddies: BuddySet[];
   config: UserConfig | undefined;
   jwt: Decoded | undefined;
 }
@@ -48,7 +46,8 @@ export interface Decoded {
   sub: string;
 }
 
-export class UserConfig {
-
+export interface UserConfig {
+  usernames: string[];
+  buddies: BuddySet[];
 }
 
