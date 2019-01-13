@@ -1,9 +1,23 @@
 export interface GeekGameQuery {
     geek: string;
+    geeks?: string[];
     query: string;
     extra?: string;
     format: string;
     vars: { THEM?: string, YEAR?: number, RATING?: number, MONTH?: number }
+}
+
+export interface Date {
+    year: number;
+    month? : number;
+    date?: number;
+}
+
+export interface PlaysQuery {
+    geek: string;
+    geeks?: string[];
+    start?: Date;
+    end?: Date;
 }
 
 export interface GeekGame {
@@ -95,6 +109,13 @@ export interface WarTableRow {
     preordered: number;
 }
 
+export interface Plays {
+    geek?: string;
+    game: number;
+    expansions?: number[];
+    quantity: number;
+}
+
 export interface GamePlays {
     game: number;
     plays: number;
@@ -110,6 +131,11 @@ export interface Collection {
     games: GameData[];
     metadata: SelectorMetadataSet;
     extra?: number[];
+}
+
+export interface MultiGeekPlays extends Collection {
+    geeks: string[];
+    plays: { [geek: string]: GamePlays[] }
 }
 
 export interface CollectionWithPlays extends Collection {
