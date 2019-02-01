@@ -131,7 +131,7 @@ export interface GamePlays {
 export interface Collection {
     collection: GeekGame[];
     games: GameData[];
-    metadata: SelectorMetadataSet;
+    metadata?: SelectorMetadataSet;
     extra?: number[];
 }
 
