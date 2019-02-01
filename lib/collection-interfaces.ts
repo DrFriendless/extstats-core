@@ -16,8 +16,10 @@ export interface Date {
 export interface PlaysQuery {
     geek: string;
     geeks?: string[];
-    start?: Date;
-    end?: Date;
+    year?: number;
+    month?: number;
+    date?: number;
+    filter?: string;
 }
 
 export interface GeekGame {
