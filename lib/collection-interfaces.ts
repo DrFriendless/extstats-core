@@ -118,6 +118,12 @@ export interface Plays {
     quantity: number;
 }
 
+export interface PlaysWithDate extends Plays {
+    year: number;
+    month: number;
+    date: number;
+}
+
 export interface GamePlays {
     game: number;
     plays: number;
@@ -137,7 +143,7 @@ export interface Collection {
 
 export interface MultiGeekPlays extends Collection {
     geeks: string[];
-    plays: { [geek: string]: GamePlays[] }
+    plays: { [geek: string]: PlaysWithDate[] }
 }
 
 export interface CollectionWithPlays extends Collection {
