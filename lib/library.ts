@@ -9,6 +9,6 @@ export function roundRating(r: number): number {
 
 export function makeGamesIndex(games: GameData[]): { [bggid: number]: GameData } {
     const result = {} as  { [bggid: number]: GameData };
-    games.forEach(gd => result[gd.bggid] = gd);
+    if (games) games.forEach(gd => result[gd.bggid] = gd);
     return result;
 }

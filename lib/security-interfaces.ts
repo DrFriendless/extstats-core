@@ -29,9 +29,10 @@ export class BuddySet {
 }
 
 export interface UserData {
-  first: boolean | undefined;
-  config: UserConfig | undefined;
-  jwt: Decoded | undefined;
+  first?: boolean;
+  config?: UserConfig;
+  jwt?: Decoded;
+  userName: string;
 }
 
 // this is everything that we store.
