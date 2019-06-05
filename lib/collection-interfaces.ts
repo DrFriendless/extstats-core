@@ -153,6 +153,7 @@ export interface CollectionWithPlays extends Collection {
 
 export interface CollectionWithMonthlyPlays extends Collection {
     plays: MonthlyPlays[];
+    counts: MonthlyPlayCount[];
 }
 
 export interface MonthlyPlays {
@@ -161,6 +162,12 @@ export interface MonthlyPlays {
     game: number;
     expansion: boolean;
     quantity: number;
+}
+
+export interface MonthlyPlayCount {
+    year: number;
+    month: number;
+    count: number;
 }
 
 export interface GeekSummary {
