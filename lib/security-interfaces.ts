@@ -44,7 +44,17 @@ export interface PersonalData {
 
 export interface Decoded {
   nickname: string;
+  name: string;
+  picture: string;
+  updated_at: string;
+  email: string;
+  email_verified: string;
   sub: string;
+  aud: string;
+  iat: number;
+  exp: number;
+  at_hash: string;
+  nonce: string;
 }
 
 export interface UserConfig {

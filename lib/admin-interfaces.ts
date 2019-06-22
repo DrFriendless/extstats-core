@@ -35,3 +35,21 @@ export interface NewsItem {
     date: string;
     html: string;
 }
+
+export interface FileToProcess {
+    processMethod: string;
+    url: string;
+    bggid: number;
+    geek: string;
+    month: number;
+    year: number;
+    geekid: number;
+}
+
+export interface ToProcessElement extends FileToProcess {
+    lastUpdate: any;
+    nextUpdate: any;
+    description: string;
+    lastattempt: any;
+    last_scheduled: any;
+}
