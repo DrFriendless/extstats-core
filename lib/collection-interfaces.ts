@@ -108,6 +108,8 @@ export interface WarTableRow {
     zeros: number;
     ext100: number;
     hindex: number;
+    gindex: number;
+    hrindex: number;
     preordered: number;
 }
 
@@ -128,8 +130,8 @@ export interface GamePlays {
     game: number;
     plays: number;
     expansion: boolean;
-    firstPlay: number | undefined;
-    lastPlay: number | undefined;
+    firstPlay?: number;
+    lastPlay?: number;
     distinctYears: number;
     distinctMonths: number;
 }
@@ -171,7 +173,7 @@ export interface MonthlyPlayCount {
 }
 
 export interface GeekSummary {
-    warData: WarTableRow | undefined;
+    warData?: WarTableRow;
     rated: number;
     average: number;
     monthsPlayed: number;

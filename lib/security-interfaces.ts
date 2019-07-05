@@ -37,9 +37,9 @@ export interface UserData {
 
 // this is everything that we store.
 export interface PersonalData {
-  userData: UserData | undefined;
-  allData: object | undefined;
-  error: string | undefined;
+  userData?: UserData;
+  allData?: object;
+  error?: string;
 }
 
 export interface Decoded {
