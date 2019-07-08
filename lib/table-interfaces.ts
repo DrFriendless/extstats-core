@@ -27,6 +27,8 @@ export interface RankingTableRow {
     normalised_ranking: number;
     total_plays: number;
     ranking: number;
+    hindex: number;
+    gindex: number;
 }
 
 export interface UserCollectionRow {
