@@ -8,35 +8,54 @@ export interface ExpansionRow {
 }
 
 export class ExpansionData {
-    private readonly gameToExpansions: { [game: number]: number[] };
-    private readonly expansionToBaseGames: { [game: number]: number[] };
+    private readonly rows: ExpansionRow[];
+    private readonly expansions: Set<Number>;
+    private gameToExpansions: { [game: number]: number[] } | undefined;
+    private expansionToBaseGames: { [game: number]: number[] } | undefined;
 
     constructor(rows: ExpansionRow[]) {
-        this.gameToExpansions = mapValues(groupBy(rows, (row: ExpansionRow) => row.basegame), (rs: ExpansionRow[]) => rs.map(row => row.expansion));
-        this.expansionToBaseGames = mapValues(groupBy(rows, (row: ExpansionRow) => row.expansion), (rs: ExpansionRow[]) => rs.map(row => row.basegame));
+        this.rows = rows;
+        this.expansions = new Set<Number>(rows.map(row => row.expansion));
+    }
+
+    private init(): void {
+        if (!this.gameToExpansions) {
+            // this takes over a second to run! There are 25000+ rows in this.rows...
+            this.gameToExpansions = mapValues(groupBy(this.rows, row => row.basegame), (rs: ExpansionRow[]) => rs.map(row => row.expansion));
+            this.expansionToBaseGames = mapValues(groupBy(this.rows, row => row.expansion), (rs: ExpansionRow[]) => rs.map(row => row.basegame));
+            this.rows.splice(0);
+        }
     }
 
     isExpansion(game: number): boolean {
-        return !!this.expansionToBaseGames[game];
+        return this.expansions.has(game);
     }
 
     isBasegameOf(maybeBaseGame: number, maybeExpansion: number): boolean {
-        const exps = this.gameToExpansions[maybeBaseGame] as number[];
+        this.init();
+        if (!this.gameToExpansions) return false;
+        const exps = this.gameToExpansions[maybeBaseGame];
         return exps && exps.indexOf(maybeExpansion) >= 0;
     }
 
     isAnyBasegameOf(maybeBaseGames: number[], maybeExpansion: number): boolean {
-        const basegames = this.expansionToBaseGames[maybeExpansion] as number[];
+        this.init();
+        if (!this.expansionToBaseGames) return false;
+        const basegames = this.expansionToBaseGames[maybeExpansion];
         return basegames && some(maybeBaseGames, (mbg: number) => basegames.indexOf(mbg) >= 0);
     }
 
     getUniqueBasegame(expansion: number): number | undefined {
+        this.init();
+        if (!this.expansionToBaseGames) return undefined;
         const basegames = this.expansionToBaseGames[expansion];
         if (basegames && basegames.length == 1) return basegames[0];
         return undefined;
     }
 
     getBasegames(expansion: number): number[] {
+        this.init();
+        if (!this.expansionToBaseGames) return [];
         return this.expansionToBaseGames[expansion] || [];
     }
 

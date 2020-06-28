@@ -1,6 +1,6 @@
 {
   "name": "extstats-core",
-  "version": "1.10.0",
+  "version": "1.10.3",
   "description": "Shared resources and definitions for ExtendedStatsServerless",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,21 +8,26 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "tsc && jest",
+    "clear_jest": "jest --clearCache"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DrFriendless/extstats-core.git"
   },
-  "author": "John Farrell",
+  "author": "John Farrell <friendless.farrell@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DrFriendless/extstats-core/issues"
   },
   "homepage": "https://github.com/DrFriendless/extstats-core#readme",
   "devDependencies": {
-    "@types/lodash": "^4.14.150",
-    "typescript": "^3.8.3"
+    "@types/jest": "^25.2.3",
+    "@types/lodash": "^4.14.155",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.1",
+    "typescript": "^3.9.5"
   },
   "dependencies": {
     "lodash": "^4.17.15"
