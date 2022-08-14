@@ -9,3 +9,4 @@ export * from './extstats-storage';
 export * from './table-interfaces';
 export * from './security-interfaces';
 export * from './library';
+export * from './data-exchange';
