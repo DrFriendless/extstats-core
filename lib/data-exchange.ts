@@ -1,6 +1,8 @@
 // this file lives in extstats-core.
 // any copies of it anywhere else are temporary
 
+import {FileToProcess} from "./admin-interfaces";
+
 export interface UserListPayload {
   users: string[];
 }
@@ -108,3 +110,74 @@ export interface CleanUpCollectionResult {
   items: number[];
 }
 
+export type UpdateUserListMessage = {
+  discriminator: "UpdateUserListMessage";
+  users: string[];
+}
+
+export type UpdateMetadataMessage = {
+  discriminator: "UpdateMetadataMessage";
+  metadata: Metadata
+}
+
+export type UpdateTop50Message = {
+  discriminator: "UpdateTop50Message";
+  top50: number[];
+}
+
+export type NoSuchGameMessage = {
+  discriminator: "NoSuchGameMessage";
+  gameId: number;
+}
+
+export type GameResultMessage = {
+  discriminator: "GameResultMessage";
+  result: ProcessGameResult;
+}
+
+export type UserResultMessage = {
+  discriminator: "UserResultMessage";
+  result: ProcessUserResult;
+}
+
+export type CollectionResultMessage = {
+  discriminator: "CollectionResultMessage";
+  result: ProcessCollectionResult;
+}
+
+export type MarkAsProcessedMessage = {
+  discriminator: "MarkAsProcessedMessage";
+  context: string;
+  fileDetails: FileToProcess;
+}
+
+export type MarkAsUnprocessedMessage = {
+  discriminator: "MarkAsUnprocessedMessage";
+  context: string;
+  fileDetails: FileToProcess;
+}
+
+export type MarkAsTryAgainMessage = {
+  discriminator: "MarkAsTryAgainMessage";
+  context: string;
+  fileDetails: FileToProcess;
+}
+
+export type CleanUpCollectionMessage = {
+  discriminator: "CleanUpCollectionMessage";
+  params: CleanUpCollectionResult;
+}
+
+export type PlayedResultMessage = {
+  discriminator: "PlayedResultMessage";
+  monthsData: MonthPlayedData;
+}
+
+export type PlaysResultMessage = {
+  discriminator: "PlaysResultMessage";
+  result: ProcessPlaysResult;
+}
+
+export type QueueMessage = UpdateUserListMessage | UpdateMetadataMessage | UpdateTop50Message | NoSuchGameMessage |
+    GameResultMessage | UserResultMessage | CollectionResultMessage | MarkAsProcessedMessage | MarkAsUnprocessedMessage |
+    MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage;
