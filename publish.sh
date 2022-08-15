@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-npm publish
+cp package.json ./dist
+cd ./dist
+npm publish $*
