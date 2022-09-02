@@ -1,9 +1,9 @@
 {
   "name": "extstats-core",
-  "version": "1.11.5",
+  "version": "1.11.6",
   "description": "Shared resources and definitions for ExtendedStatsServerless",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
