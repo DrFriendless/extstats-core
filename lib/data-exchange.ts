@@ -178,6 +178,11 @@ export type PlaysResultMessage = {
   result: ProcessPlaysResult;
 }
 
+export type EnsureGamesMessage = {
+  discriminator: "EnsureGamesMessage";
+  gameIds: number[];
+}
+
 export type QueueMessage = UpdateUserListMessage | UpdateMetadataMessage | UpdateTop50Message | NoSuchGameMessage |
     GameResultMessage | UserResultMessage | CollectionResultMessage | MarkAsProcessedMessage | MarkAsUnprocessedMessage |
-    MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage;
+    MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage | EnsureGamesMessage;
