@@ -3,10 +3,6 @@
 
 import {FileToProcess} from "./admin-interfaces";
 
-export interface UserListPayload {
-  users: string[];
-}
-
 export interface SeriesMetadata {
   name: string;
   games: number[];
@@ -109,6 +105,8 @@ export interface CleanUpCollectionResult {
   url: string;
   items: number[];
 }
+
+export type ProcessMethod = "processCollection" | "processMarket" | "processPlayed" | "processGame" | "processTop50" | "processFrontPage" | "processUser" | "processPlays" | "processDesigner" | "processPublisher";
 
 export type UpdateUserListMessage = {
   discriminator: "UpdateUserListMessage";
