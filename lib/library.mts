@@ -1,4 +1,4 @@
-import { GameData, GamePlays } from "./collection-interfaces";
+import type { GameData, GamePlays } from "./collection-interfaces.mjs";
 
 export function roundRating(r: number): number {
     let rating = Math.round(r);

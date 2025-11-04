@@ -1,7 +1,7 @@
 // this file lives in extstats-core.
 // any copies of it anywhere else are temporary
 
-import {FileToProcess} from "./admin-interfaces";
+import type {FileToProcess} from "./admin-interfaces.mjs";
 
 export interface SeriesMetadata {
   name: string;
@@ -113,6 +113,11 @@ export type UpdateUserListMessage = {
   users: string[];
 }
 
+export type NoSuchGeekMessage = {
+  discriminator: "NoSuchGeekMessage";
+  geek: string;
+}
+
 export type UpdateMetadataMessage = {
   discriminator: "UpdateMetadataMessage";
   metadata: Metadata
@@ -183,4 +188,4 @@ export type EnsureGamesMessage = {
 
 export type QueueMessage = UpdateUserListMessage | UpdateMetadataMessage | UpdateTop50Message | NoSuchGameMessage |
     GameResultMessage | UserResultMessage | CollectionResultMessage | MarkAsProcessedMessage | MarkAsUnprocessedMessage |
-    MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage | EnsureGamesMessage;
+    MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage | EnsureGamesMessage | NoSuchGeekMessage;

@@ -1,6 +1,4 @@
-import {some} from "lodash";
-import {mapValues} from "lodash";
-import {groupBy} from "lodash";
+import * as _ from "lodash-es";
 
 export interface ExpansionRow {
     basegame: number;
@@ -21,8 +19,8 @@ export class ExpansionData {
     private init(): void {
         if (!this.gameToExpansions) {
             // this takes over a second to run! There are 25000+ rows in this.rows...
-            this.gameToExpansions = mapValues(groupBy(this.rows, row => row.basegame), (rs: ExpansionRow[]) => rs.map(row => row.expansion));
-            this.expansionToBaseGames = mapValues(groupBy(this.rows, row => row.expansion), (rs: ExpansionRow[]) => rs.map(row => row.basegame));
+            this.gameToExpansions = _.mapValues(_.groupBy(this.rows, row => row.basegame), (rs: ExpansionRow[]) => rs.map(row => row.expansion));
+            this.expansionToBaseGames = _.mapValues(_.groupBy(this.rows, row => row.expansion), (rs: ExpansionRow[]) => rs.map(row => row.basegame));
             this.rows.splice(0);
         }
     }
@@ -42,7 +40,7 @@ export class ExpansionData {
         this.init();
         if (!this.expansionToBaseGames) return false;
         const basegames = this.expansionToBaseGames[maybeExpansion];
-        return basegames && some(maybeBaseGames, (mbg: number) => basegames.indexOf(mbg) >= 0);
+        return basegames && _.some(maybeBaseGames, (mbg: number) => basegames.indexOf(mbg) >= 0);
     }
 
     getUniqueBasegame(expansion: number): number | undefined {
