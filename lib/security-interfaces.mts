@@ -1,7 +1,3 @@
-export interface Identity {
-  jwt: string;
-}
-
 export class BuddySet {
     private name: string;
     private buddies: string[];
@@ -29,36 +25,10 @@ export class BuddySet {
 }
 
 export interface UserData {
-  first?: boolean;
-  config?: UserConfig;
-  jwt?: Decoded;
+  config: any;
   userName: string;
-}
-
-// this is everything that we store.
-export interface PersonalData {
-  userData?: UserData;
-  allData?: object;
-  error?: string;
-}
-
-export interface Decoded {
-  nickname: string;
-  name: string;
-  picture: string;
-  updated_at: string;
-  email: string;
-  email_verified: string;
-  sub: string;
-  aud: string;
-  iat: number;
-  exp: number;
-  at_hash: string;
-  nonce: string;
-}
-
-export interface UserConfig {
-  usernames: string[];
-  buddies: BuddySet[];
+  created: Date;
+  lastLogin: Date | undefined;
+  loginCount: number;
 }
 

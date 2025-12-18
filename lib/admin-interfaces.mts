@@ -20,6 +20,7 @@ export interface SystemStats {
     distinctGGOwners: number;
     playsRows: number;
     normalisedPlaysRows: number;
+    upcoming: { type: string; count: number; }[][]
 }
 
 export interface FAQCount {
@@ -37,12 +38,22 @@ export interface NewsItem {
 }
 
 export interface FileToProcess {
+    id: number;
     processMethod: string;
     url: string;
     bggid: number;
     geek: string;
     month: number;
     year: number;
+    geekid: number;
+}
+
+export interface PlaysToProcess {
+    url: string;
+    processMethod: string;
+    geek: string;
+    startYmdInc: string;
+    endYmdInc: string;
     geekid: number;
 }
 

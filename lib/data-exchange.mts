@@ -88,8 +88,7 @@ export interface PlayData {
   location: string;
   date: string;
   gameid: number;
-  raters: number;
-  ratingsTotal: number;
+  id: number;
 }
 
 export interface ProcessPlaysResult {
@@ -98,6 +97,15 @@ export interface ProcessPlaysResult {
   year: number;
   plays: PlayData[];
   url: string;
+}
+
+export interface ProcessPlaysForPeriodResult {
+  url: string;
+  processMethod: string;
+  geek: string;
+  startYmdInc: string;
+  endYmdInc: string;
+  plays: PlayData[];
 }
 
 export interface CleanUpCollectionResult {
@@ -176,6 +184,11 @@ export type PlayedResultMessage = {
   monthsData: MonthPlayedData;
 }
 
+export type PlaysForPeriodResultMessage = {
+  discriminator: "PlaysForPeriodResultMessage";
+  plays: ProcessPlaysForPeriodResult;
+}
+
 export type PlaysResultMessage = {
   discriminator: "PlaysResultMessage";
   result: ProcessPlaysResult;
@@ -186,6 +199,11 @@ export type EnsureGamesMessage = {
   gameIds: number[];
 }
 
+export type SlowDownMessage = {
+  discriminator: "SlowDownMessage";
+}
+
 export type QueueMessage = UpdateUserListMessage | UpdateMetadataMessage | UpdateTop50Message | NoSuchGameMessage |
     GameResultMessage | UserResultMessage | CollectionResultMessage | MarkAsProcessedMessage | MarkAsUnprocessedMessage |
-    MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage | EnsureGamesMessage | NoSuchGeekMessage;
+    MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage | EnsureGamesMessage |
+    NoSuchGeekMessage | PlaysForPeriodResultMessage | SlowDownMessage;

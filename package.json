@@ -1,6 +1,6 @@
 {
   "name": "extstats-core",
-  "version": "1.21.0",
+  "version": "1.33.1",
   "description": "Shared resources and definitions for ExtendedStatsServerless",
   "type": "module",
   "main": "index.mjs",
