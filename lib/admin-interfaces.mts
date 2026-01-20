@@ -20,7 +20,8 @@ export interface SystemStats {
     distinctGGOwners: number;
     playsRows: number;
     normalisedPlaysRows: number;
-    upcoming: { type: string; count: number; }[][]
+    upcoming: { type: string; count: number; }[][];
+    last24: { type: string; count: number; }[];
 }
 
 export interface FAQCount {

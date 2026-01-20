@@ -203,7 +203,12 @@ export type SlowDownMessage = {
   discriminator: "SlowDownMessage";
 }
 
+export type MarkPlaysForPeriodProcessedMessage = {
+  discriminator: "MarkPlaysForPeriodProcessed";
+  url: string;
+}
+
 export type QueueMessage = UpdateUserListMessage | UpdateMetadataMessage | UpdateTop50Message | NoSuchGameMessage |
     GameResultMessage | UserResultMessage | CollectionResultMessage | MarkAsProcessedMessage | MarkAsUnprocessedMessage |
     MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage | EnsureGamesMessage |
-    NoSuchGeekMessage | PlaysForPeriodResultMessage | SlowDownMessage;
+    NoSuchGeekMessage | PlaysForPeriodResultMessage | SlowDownMessage | MarkPlaysForPeriodProcessedMessage;

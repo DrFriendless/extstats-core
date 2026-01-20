@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-rm dist/*
+rm -rf dist/*
 rm extstats-core-*.tgz
 npm run build

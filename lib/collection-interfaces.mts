@@ -32,6 +32,17 @@ export interface GeekGame {
     prevOwned: boolean;
 }
 
+export interface ExtendedGeekGameShort {
+    bggid: number;
+    r: number;
+    o: boolean;
+    wtb: boolean;
+    wtp: boolean;
+    pre: boolean;
+    prev: boolean;
+    n: number;
+}
+
 export interface SelectorMetadata {
     game: number;
     colour?: string;
@@ -87,6 +98,20 @@ export interface GameData {
     subdomain: string;
     weight: number;
     isExpansion: boolean;
+}
+
+export interface GameDataShort {
+    bggid: number;
+    n: string;
+    rt: number;
+    rk: number;
+    yp: number;
+    min: number;
+    max: number;
+    pt: number;
+    sub: string;
+    w: number;
+    e: boolean;
 }
 
 export interface WarTableRow {
