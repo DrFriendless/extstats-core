@@ -9,3 +9,5 @@ export * from './table-interfaces.mjs';
 export * from './security-interfaces.mjs';
 export * from './library.mjs';
 export * from './data-exchange.mjs';
+export * from './user-config.mjs';
+export * from './disambiguation.mjs';
