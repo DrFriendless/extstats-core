@@ -96,6 +96,7 @@ export interface GameData {
     maxPlayers: number;
     playTime: number;
     subdomain: string;
+    usersOwned: number;
     weight: number;
     isExpansion: boolean;
 }
