@@ -65,6 +65,18 @@ export interface ProcessGameResult {
   expansions: number[];
 }
 
+export interface ProcessDesignerResult {
+  bggid: number;
+  name: string;
+  url: string;
+}
+
+export interface ProcessPublisherResult {
+  bggid: number;
+  name: string;
+  url: string;
+}
+
 export interface ProcessUserResult {
   geek: string;
   bggid: number;
@@ -194,6 +206,16 @@ export type PlaysResultMessage = {
   result: ProcessPlaysResult;
 }
 
+export type DesignerResultMessage = {
+  discriminator: "DesignerResultMessage";
+  result: ProcessDesignerResult;
+}
+
+export type PublisherResultMessage = {
+  discriminator: "PublisherResultMessage";
+  result: ProcessPublisherResult;
+}
+
 export type EnsureGamesMessage = {
   discriminator: "EnsureGamesMessage";
   gameIds: number[];
@@ -211,4 +233,5 @@ export type MarkPlaysForPeriodProcessedMessage = {
 export type QueueMessage = UpdateUserListMessage | UpdateMetadataMessage | UpdateTop50Message | NoSuchGameMessage |
     GameResultMessage | UserResultMessage | CollectionResultMessage | MarkAsProcessedMessage | MarkAsUnprocessedMessage |
     MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage | EnsureGamesMessage |
-    NoSuchGeekMessage | PlaysForPeriodResultMessage | SlowDownMessage | MarkPlaysForPeriodProcessedMessage;
+    NoSuchGeekMessage | PlaysForPeriodResultMessage | SlowDownMessage | MarkPlaysForPeriodProcessedMessage |
+    DesignerResultMessage | PublisherResultMessage;
