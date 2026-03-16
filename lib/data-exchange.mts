@@ -1,31 +1,30 @@
 // this file lives in extstats-core.
-// any copies of it anywhere else are temporary
 
 import type {FileToProcess} from "./admin-interfaces.mjs";
 
-export interface SeriesMetadata {
+export interface SeriesMetadataResult {
   name: string;
   games: number[];
 }
 
 export const METADATA_RULE_BASEGAME = 1;
 
-export interface MetadataRule {
+export interface MetadataRuleResult {
   rule: number;
   game: number;
 }
 
 export interface Metadata {
-  series: SeriesMetadata[];
-  rules: MetadataRule[];
+  series: SeriesMetadataResult[];
+  rules: MetadataRuleResult[];
 }
 
 export interface ProcessCollectionResult {
   geek: string;
-  items: CollectionGame[];
+  items: CollectionGameResult[];
 }
 
-export interface CollectionGame {
+export interface CollectionGameResult {
   gameId: number;
   rating: number;
   owned: boolean;
@@ -84,18 +83,18 @@ export interface ProcessUserResult {
   url: string;
 }
 
-export interface MonthPlayed {
+export interface MonthPlayedResult {
   month: number;
   year: number;
 }
 
-export interface MonthPlayedData {
+export interface MonthPlayedDataResult {
   geek: string;
-  monthsPlayed: MonthPlayed[];
+  monthsPlayed: MonthPlayedResult[];
   url: string;
 }
 
-export interface PlayData {
+export interface PlayDataResult {
   quantity: number;
   location: string;
   date: string;
@@ -107,7 +106,7 @@ export interface ProcessPlaysResult {
   geek: string;
   month: number;
   year: number;
-  plays: PlayData[];
+  plays: PlayDataResult[];
   url: string;
 }
 
@@ -117,7 +116,7 @@ export interface ProcessPlaysForPeriodResult {
   geek: string;
   startYmdInc: string;
   endYmdInc: string;
-  plays: PlayData[];
+  plays: PlayDataResult[];
 }
 
 export interface CleanUpCollectionResult {
@@ -193,7 +192,7 @@ export type CleanUpCollectionMessage = {
 
 export type PlayedResultMessage = {
   discriminator: "PlayedResultMessage";
-  monthsData: MonthPlayedData;
+  monthsData: MonthPlayedDataResult;
 }
 
 export type PlaysForPeriodResultMessage = {
