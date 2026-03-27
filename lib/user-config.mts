@@ -39,7 +39,7 @@ export class UserConfig {
                 parent[f!] = curr;
             }
             f = field;
-            if (field in curr) {
+            if (curr.hasOwnProperty(field)) {
                 parent = curr;
                 curr = curr[field] as object;
             } else {
@@ -57,7 +57,9 @@ export class UserConfig {
 
     maybeSet<T>(path: string, value: T): boolean {
         let {curr, parent, f} = this.locatePath(path);
-        if (curr && value && value === curr) return false;
+        if (curr && value) {
+            if ((typeof value === "string" || typeof value === "number") && (typeof value === typeof curr) && value === curr) return false;
+        }
         parent[f!] = value;
         return true;
     }
