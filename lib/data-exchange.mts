@@ -229,8 +229,13 @@ export type MarkPlaysForPeriodProcessedMessage = {
   url: string;
 }
 
+export type ReprocessPlaysMessage = {
+  discriminator: "ReprocessPlays";
+  geek: string;
+}
+
 export type QueueMessage = UpdateUserListMessage | UpdateMetadataMessage | UpdateTop50Message | NoSuchGameMessage |
     GameResultMessage | UserResultMessage | CollectionResultMessage | MarkAsProcessedMessage | MarkAsUnprocessedMessage |
     MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage | EnsureGamesMessage |
     NoSuchGeekMessage | PlaysForPeriodResultMessage | SlowDownMessage | MarkPlaysForPeriodProcessedMessage |
-    DesignerResultMessage | PublisherResultMessage;
+    DesignerResultMessage | PublisherResultMessage | ReprocessPlaysMessage;
