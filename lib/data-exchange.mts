@@ -234,8 +234,12 @@ export type ReprocessPlaysMessage = {
   geek: string;
 }
 
+export type RebuildMaterialisedViewsMessage = {
+  discriminator: "RebuildMaterialisedViews";
+}
+
 export type QueueMessage = UpdateUserListMessage | UpdateMetadataMessage | UpdateTop50Message | NoSuchGameMessage |
     GameResultMessage | UserResultMessage | CollectionResultMessage | MarkAsProcessedMessage | MarkAsUnprocessedMessage |
     MarkAsTryAgainMessage | CleanUpCollectionMessage | PlayedResultMessage | PlaysResultMessage | EnsureGamesMessage |
     NoSuchGeekMessage | PlaysForPeriodResultMessage | SlowDownMessage | MarkPlaysForPeriodProcessedMessage |
-    DesignerResultMessage | PublisherResultMessage | ReprocessPlaysMessage;
+    DesignerResultMessage | PublisherResultMessage | ReprocessPlaysMessage | RebuildMaterialisedViewsMessage;
