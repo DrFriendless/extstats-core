@@ -19,7 +19,7 @@ export interface Metadata {
   rules: MetadataRuleResult[];
 }
 
-export interface ProcessCollectionResult {
+export interface ProcessCollectionResult extends RequestStats {
   geek: string;
   items: CollectionGameResult[];
 }
@@ -37,7 +37,7 @@ export interface CollectionGameResult {
   prevOwned: boolean;
 }
 
-export interface ProcessGameResult {
+export interface ProcessGameResult extends RequestStats {
   gameId: number;
   name: string;
   average: number;
@@ -64,19 +64,19 @@ export interface ProcessGameResult {
   expansions: number[];
 }
 
-export interface ProcessDesignerResult {
+export interface ProcessDesignerResult extends RequestStats {
   bggid: number;
   name: string;
   url: string;
 }
 
-export interface ProcessPublisherResult {
+export interface ProcessPublisherResult extends RequestStats {
   bggid: number;
   name: string;
   url: string;
 }
 
-export interface ProcessUserResult {
+export interface ProcessUserResult extends RequestStats {
   geek: string;
   bggid: number;
   country: string;
@@ -102,7 +102,7 @@ export interface PlayDataResult {
   id: number;
 }
 
-export interface ProcessPlaysResult {
+export interface ProcessPlaysResult extends RequestStats {
   geek: string;
   month: number;
   year: number;
@@ -110,7 +110,7 @@ export interface ProcessPlaysResult {
   url: string;
 }
 
-export interface ProcessPlaysForPeriodResult {
+export interface ProcessPlaysForPeriodResult extends RequestStats {
   url: string;
   processMethod: string;
   geek: string;
@@ -236,6 +236,14 @@ export type ReprocessPlaysMessage = {
 
 export type RebuildMaterialisedViewsMessage = {
   discriminator: "RebuildMaterialisedViews";
+}
+
+export interface RequestStats {
+  initiated: number;
+  scheduled: number;
+  downloaded: number;
+  received: number;
+  completed: number;
 }
 
 export type QueueMessage = UpdateUserListMessage | UpdateMetadataMessage | UpdateTop50Message | NoSuchGameMessage |

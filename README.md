@@ -9,4 +9,5 @@ Contents:
 
 ## Release Notes
 
-2.04 Fix bug in UserConfig using 'in'
+2.0.4 Fix bug in UserConfig using 'in'
+2.0.7 Add RequestStats
